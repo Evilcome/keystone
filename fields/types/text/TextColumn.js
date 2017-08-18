@@ -12,6 +12,18 @@ var TextColumn = React.createClass({
 	getValue () {
 		// cropping text is important for textarea, which uses this column
 		const value = this.props.data.fields[this.props.col.path];
+
+		if (this.props.col.path == 'photo1url' || this.props.col.path == 'photo2url') {
+			if (value) {
+				const src = `http://iccie.ifnotalk.com/images/pic/${value}.jpg`;
+				return (
+					<div>
+						<img src={src} width="100%" />
+					</div>
+				)
+			}
+		}
+
 		return value ? value.substr(0, 100) : null;
 	},
 	render () {

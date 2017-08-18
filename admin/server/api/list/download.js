@@ -51,10 +51,13 @@ module.exports = function (req, res, next) {
 				Object.keys(row).forEach(function (i) {
 					if (fields.indexOf(i) === -1) fields.push(i);
 				});
+				if(row.photo1url) row.photo1url = 'http://iccie.ifnotalk.com/images/pic/' + row.photo1url + '.jpg';
+				if(row.photo2url) row.photo2url = 'http://iccie.ifnotalk.com/images/pic/' + row.photo2url + '.jpg';
 				return row;
 			});
 			res.attachment(req.list.path + '-' + moment().format('YYYYMMDD-HHMMSS') + '.csv');
 			res.setHeader('Content-Type', 'application/octet-stream');
+			res.write(new Buffer('\xEF\xBB\xBF','binary'));//add utf-8 bom
 			var content = baby.unparse({
 				data: data,
 				fields: fields,
