@@ -15,7 +15,8 @@ var TextColumn = React.createClass({
 
 		if (this.props.col.path == 'photo1url' || this.props.col.path == 'photo2url') {
 			if (value) {
-				const src = `http://iccie.ifnotalk.com/images/pic/${value}.jpg`;
+				const timestamp = new Date().getTime();
+				const src = `http://iccie.ifnotalk.com/images/pic/${value}.jpg?t=${timestamp}`;
 				return (
 					<div>
 						<img src={src} width="100%" />
