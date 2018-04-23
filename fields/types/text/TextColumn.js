@@ -13,10 +13,10 @@ var TextColumn = React.createClass({
 		// cropping text is important for textarea, which uses this column
 		const value = this.props.data.fields[this.props.col.path];
 
-		if (this.props.col.path == 'photo1url' || this.props.col.path == 'photo2url') {
+		if (this.props.col.path == 'photo_certificate' || this.props.col.path == 'photo_passport') {
 			if (value) {
 				const timestamp = new Date().getTime();
-				const src = `http://iccie.ifnotalk.com/images/pic/${value}.jpg?t=${timestamp}`;
+				const src = `http://mch-assets.ifnotalk.com/photo/${value}`;
 				return (
 					<div>
 						<img src={src} width="100%" />

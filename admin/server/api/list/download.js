@@ -51,8 +51,8 @@ module.exports = function (req, res, next) {
 				Object.keys(row).forEach(function (i) {
 					if (fields.indexOf(i) === -1) fields.push(i);
 				});
-				if(row.photo1url) row.photo1url = 'http://iccie.ifnotalk.com/images/pic/' + row.photo1url + '.jpg';
-				if(row.photo2url) row.photo2url = 'http://iccie.ifnotalk.com/images/pic/' + row.photo2url + '.jpg';
+				if(row.photo_certificate) row.photo_certificate = 'http://mch-assets.ifnotalk.com/photo/' + row.photo_certificate;
+				if(row.photo_passport) row.photo_passport = 'http://mch-assets.ifnotalk.com/photo/' + row.photo_passport;
 				return row;
 			});
 			res.attachment(req.list.path + '-' + moment().format('YYYYMMDD-HHMMSS') + '.csv');
